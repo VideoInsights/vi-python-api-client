@@ -25,6 +25,7 @@ from videoinsights_client.models.media_file_upload_presigned_url import MediaFil
 from videoinsights_client.models.media_upload import MediaUpload
 from videoinsights_client.models.media_visual_analyzer import MediaVisualAnalyzer
 from videoinsights_client.models.media_visual_analyzer_deserializer import MediaVisualAnalyzerDeserializer
+from videoinsights_client.models.mode_enum import ModeEnum
 from videoinsights_client.models.user_feedback_deserializer import UserFeedbackDeserializer
 from videoinsights_client.models.user_feedback_response import UserFeedbackResponse
 from videoinsights_client.models.user_information import UserInformation

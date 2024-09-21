@@ -20,15 +20,17 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+from videoinsights_client.models.mode_enum import ModeEnum
 
 class MediaFileQuery(BaseModel):
     """
     MediaFileQuery
     """
     media_id: StrictStr = Field(default=..., description="The media id of the video")
+    mode: Optional[ModeEnum] = Field(default=None, description="Sets the analysis mode. Options are 'normal' and 'frame_by_frame'. Note that 'frame_by_frame' is only available for visual queries and incurs extra cost  * `NORMAL` - NORMAL * `FRAME_BY_FRAME` - FRAME_BY_FRAME")
     query: StrictStr = Field(default=..., description="The question about the video")
     visual_query: Optional[StrictBool] = Field(default=False, description="If true, the query is a visual analysis, incurring more cost")
-    __properties = ["media_id", "query", "visual_query"]
+    __properties = ["media_id", "mode", "query", "visual_query"]
 
     class Config:
         """Pydantic configuration"""
@@ -72,6 +74,7 @@ class MediaFileQuery(BaseModel):
 
         _obj = MediaFileQuery.parse_obj({
             "media_id": obj.get("media_id"),
+            "mode": obj.get("mode"),
             "query": obj.get("query"),
             "visual_query": obj.get("visual_query") if obj.get("visual_query") is not None else False
         })

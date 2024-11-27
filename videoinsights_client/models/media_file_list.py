@@ -19,7 +19,7 @@ import json
 
 
 from typing import List
-from pydantic import BaseModel, Field, StrictStr, conlist
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from videoinsights_client.models.media_file import MediaFile
 
 class MediaFileList(BaseModel):
@@ -27,8 +27,11 @@ class MediaFileList(BaseModel):
     MediaFileList
     """
     files: conlist(MediaFile) = Field(...)
+    has_more_pages: StrictBool = Field(...)
+    max_pages: StrictInt = Field(...)
+    page: StrictInt = Field(...)
     user: StrictStr = Field(...)
-    __properties = ["files", "user"]
+    __properties = ["files", "has_more_pages", "max_pages", "page", "user"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,6 +77,9 @@ class MediaFileList(BaseModel):
 
         _obj = MediaFileList.parse_obj({
             "files": [MediaFile.from_dict(_item) for _item in obj.get("files")] if obj.get("files") is not None else None,
+            "has_more_pages": obj.get("has_more_pages"),
+            "max_pages": obj.get("max_pages"),
+            "page": obj.get("page"),
             "user": obj.get("user")
         })
         return _obj

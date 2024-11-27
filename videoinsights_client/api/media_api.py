@@ -651,16 +651,18 @@ class MediaApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def media_list(self, **kwargs) -> MediaFileList:  # noqa: E501
+    def media_list(self, page : Annotated[Optional[StrictInt], Field(description="The media file list page number to get. Defaults to 0 and increments by 1 for longer lists")] = None, **kwargs) -> MediaFileList:  # noqa: E501
         """media_list  # noqa: E501
 
         Lists all files  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.media_list(async_req=True)
+        >>> thread = api.media_list(page, async_req=True)
         >>> result = thread.get()
 
+        :param page: The media file list page number to get. Defaults to 0 and increments by 1 for longer lists
+        :type page: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -676,19 +678,21 @@ class MediaApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the media_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.media_list_with_http_info(**kwargs)  # noqa: E501
+        return self.media_list_with_http_info(page, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def media_list_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def media_list_with_http_info(self, page : Annotated[Optional[StrictInt], Field(description="The media file list page number to get. Defaults to 0 and increments by 1 for longer lists")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """media_list  # noqa: E501
 
         Lists all files  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.media_list_with_http_info(async_req=True)
+        >>> thread = api.media_list_with_http_info(page, async_req=True)
         >>> result = thread.get()
 
+        :param page: The media file list page number to get. Defaults to 0 and increments by 1 for longer lists
+        :type page: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -717,6 +721,7 @@ class MediaApi:
         _params = locals()
 
         _all_params = [
+            'page'
         ]
         _all_params.extend(
             [
@@ -747,6 +752,9 @@ class MediaApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

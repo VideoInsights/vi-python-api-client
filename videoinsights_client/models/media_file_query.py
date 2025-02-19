@@ -27,7 +27,7 @@ class MediaFileQuery(BaseModel):
     MediaFileQuery
     """
     media_id: StrictStr = Field(default=..., description="The media id of the video")
-    mode: Optional[ModeEnum] = Field(default=None, description="Sets the analysis mode. Options are 'normal' and 'frame_by_frame'. Note that 'frame_by_frame' is only available for visual queries and incurs extra cost  * `NORMAL` - NORMAL * `FRAME_BY_FRAME` - FRAME_BY_FRAME")
+    mode: Optional[ModeEnum] = Field(default=None, description="Sets the analysis mode. Options are 'normal' and 'frame_by_frame'. Note that 'frame_by_frame' is only available for visual queries and incurs extra cost  * `NORMAL` - NORMAL * `FRAME_BY_FRAME` - FRAME_BY_FRAME * `THIRTY_SECONDS` - THIRTY_SECONDS")
     query: StrictStr = Field(default=..., description="The question about the video")
     visual_query: Optional[StrictBool] = Field(default=False, description="If true, the query is a visual analysis, incurring more cost")
     __properties = ["media_id", "mode", "query", "visual_query"]

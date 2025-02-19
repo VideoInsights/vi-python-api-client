@@ -17,6 +17,7 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from videoinsights_client.api.chat_api import ChatApi
 from videoinsights_client.api.media_api import MediaApi
 from videoinsights_client.api.query_api import QueryApi
 from videoinsights_client.api.user_api import UserApi
@@ -46,9 +47,15 @@ from videoinsights_client.models.media_upload import MediaUpload
 from videoinsights_client.models.media_visual_analyzer import MediaVisualAnalyzer
 from videoinsights_client.models.media_visual_analyzer_deserializer import MediaVisualAnalyzerDeserializer
 from videoinsights_client.models.mode_enum import ModeEnum
+from videoinsights_client.models.new_chat_response import NewChatResponse
+from videoinsights_client.models.new_chat_serializers import NewChatSerializers
 from videoinsights_client.models.user_feedback_deserializer import UserFeedbackDeserializer
 from videoinsights_client.models.user_feedback_response import UserFeedbackResponse
 from videoinsights_client.models.user_information import UserInformation
+from videoinsights_client.models.user_yt_library import UserYTLibrary
+from videoinsights_client.models.user_yt_library_addition_deserializer import UserYTLibraryAdditionDeserializer
+from videoinsights_client.models.user_yt_library_addition_response import UserYTLibraryAdditionResponse
+from videoinsights_client.models.user_yt_library_item import UserYTLibraryItem
 from videoinsights_client.models.yt_query import YTQuery
 from videoinsights_client.models.yt_query_response import YTQueryResponse
 from videoinsights_client.models.youtube_metadata import YoutubeMetadata

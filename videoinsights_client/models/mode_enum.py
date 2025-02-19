@@ -23,7 +23,7 @@ from aenum import Enum, no_arg
 
 class ModeEnum(str, Enum):
     """
-    * `NORMAL` - NORMAL * `FRAME_BY_FRAME` - FRAME_BY_FRAME
+    * `NORMAL` - NORMAL * `FRAME_BY_FRAME` - FRAME_BY_FRAME * `THIRTY_SECONDS` - THIRTY_SECONDS
     """
 
     """
@@ -31,6 +31,7 @@ class ModeEnum(str, Enum):
     """
     NORMAL = 'NORMAL'
     FRAME_BY_FRAME = 'FRAME_BY_FRAME'
+    THIRTY_SECONDS = 'THIRTY_SECONDS'
 
     @classmethod
     def from_json(cls, json_str: str) -> ModeEnum:
